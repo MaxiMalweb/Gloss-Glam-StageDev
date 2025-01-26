@@ -1,0 +1,982 @@
+.appointment {
+
+  // .appointment__container
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include adaptiveValue("padding-top", 60, 40);
+
+  }
+
+  // .appointment__block-header
+
+  &__block-header {
+    max-width: toRem(754);
+    width: 100%;
+    @include adaptiveValue("margin-bottom", 80, 20);
+  }
+}
+
+
+
+.form-appointment {
+  width: 100%;
+  @include adaptiveValue("padding-top", 77, 25);
+  @include adaptiveValue("padding-bottom", 43, 20);
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: toRem(9);
+    height: toRem(5);
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: #D9D9D9;
+    z-index: 5;
+  }
+
+  //--------------------------Datepicker--------------------------
+  // .form-appointment__date
+
+  &__date {}
+}
+
+.datepicker {
+  max-width: toRem(650);
+  margin: 0 auto;
+  border: toRem(1) solid $goldColor;
+  border-radius: toRem(13);
+  background: $bgDarkLight;
+  font-family: "SFProText";
+  @include adaptiveValue("padding-top", 27, 10);
+  @include adaptiveValue("padding-bottom", 27, 10);
+  @include adaptiveValue("padding-left", 18, 8);
+  @include adaptiveValue("padding-right", 18, 8);
+  padding: toRem(27) toRem(18);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+
+  // .datepicker__input
+
+  &__input {
+    display: none;
+  }
+
+  // .datepicker__body
+
+  &__body {}
+}
+
+.datepicker-header {
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: toRem(15);
+}
+
+.year-input,
+.dropdown-button {
+  font-family: "SFProText";
+  font-size: toRem(17);
+  line-height: 129.411765%;
+  /* 22/17 */
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: capitalize;
+  outline: none;
+  border: none;
+  background-color: transparent;
+
+  @media (max-width:$mobile) {
+    @include adaptiveValue("font-size", 17, 13);
+  }
+}
+
+//month-input with custom dropdown
+.dropdown-month {
+  position: relative;
+  max-width: toRem(150);
+  width: 100%;
+
+  @media (max-width:$mobile) {
+    @include adaptiveValue("max-width", 150, 100);
+  }
+}
+
+.month-input {
+  display: none;
+}
+
+.dropdown-button {
+  position: relative;
+  width: 100%;
+  padding: toRem(5) toRem(21) toRem(5) toRem(5);
+  appearance: none;
+  border: toRem(1) solid transparent;
+  border-radius: 5px;
+  background-color: rgba(235, 235, 245, 0.3);
+  transition: all .4s ease;
+
+  @media (max-width:$mobile) {
+    @include adaptiveValue("padding-right", 21, 13);
+  }
+
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: $goldColor;
+      border: toRem(1) solid $goldColor;
+    }
+  }
+
+  &:active,
+  &.onFocus {
+    color: $mainColor;
+    border: toRem(1) solid $goldColor;
+
+    &::after {
+      color: $mainColor;
+    }
+  }
+
+  &::after {
+    content: "\e902";
+    @extend %ic;
+    position: absolute;
+    top: 18%;
+    right: 0;
+    padding: toRem(5) toRem(4) toRem(4);
+    color: $goldColor;
+    font-size: toRem(12);
+    pointer-events: none;
+    transition: all .4s ease;
+
+    @media (max-width:$mobile) {
+      @include adaptiveValue("font-size", 12, 9);
+    }
+
+  }
+
+  &._arrowUp::after {
+    transform: rotateZ(180deg);
+  }
+}
+
+.dropdown-list {
+  max-height: toRem(260);
+  overflow: auto;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 130%;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  padding: toRem(5) toRem(5);
+  background-color: $bgDark;
+  border-radius: toRem(2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+  transition: all .4s ease;
+
+  &__visible {
+    visibility: visible;
+    opacity: 0.97;
+  }
+
+  ul {
+    max-height: toRem(250);
+  }
+
+  &__item {
+    font-size: toRem(14);
+    padding: toRem(5);
+    color: $cardTitle;
+    border-radius: toRem(5);
+    cursor: pointer;
+    transition: all .3s;
+
+    &:not(:last-child) {
+      margin-bottom: toRem(2);
+    }
+
+    @media (max-width:$mobile) {
+      @include adaptiveValue("font-size", 14, 11);
+
+      &:not(:last-child) {
+        margin-bottom: toRem(4);
+      }
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        color: $goldColor;
+        background-color: rgba(235, 235, 245, 0.3);
+        transform: scale(1.04);
+      }
+    }
+
+    &:active {
+      transform: scale(1);
+      opacity: .6;
+    }
+  }
+}
+
+//year-input with custom counter 
+
+.year-counter {
+  max-width: toRem(120);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: toRem(80);
+
+  @media (max-width:$mobile) {
+    @include adaptiveValue("margin-left", 80, 14);
+    @include adaptiveValue("max-width", 120, 90);
+  }
+
+  span {
+    display: block;
+    cursor: pointer;
+  }
+
+  // .year-counter__minus
+
+  &__minus,
+  &__plus {
+
+    position: relative;
+    max-width: toRem(10);
+    width: 100%;
+    height: 100%;
+
+    @media (any-hover: hover) {
+      &:hover {
+        &.year-input {
+          border: toRem(1) solid $goldColor;
+        }
+      }
+    }
+
+    &:active {
+      transform: scale(.95);
+      opacity: .9;
+    }
+  }
+
+  &__minus::before,
+  &__plus::before {
+    position: absolute;
+    top: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: toRem(10);
+    max-width: toRem(17);
+    font-size: toRem(17);
+    color: #CEA561;
+    z-index: 5;
+
+    @media (max-width:$mobile) {
+      @include adaptiveValue("font-size", 17, 13);
+    }
+
+  }
+
+  &__minus {
+
+    &::before {
+      left: toRem(-4);
+      transform: rotateZ(90deg);
+    }
+  }
+
+  // .year-counter__plus
+
+  &__plus {
+
+    &::before {
+      right: toRem(-4);
+      transform: rotateZ(-90deg);
+    }
+  }
+}
+
+
+.year-input {
+  height: 100%;
+  text-align: center;
+  pointer-events: none;
+  border-radius: toRem(5);
+  border: toRem(1) solid transparent;
+  padding: toRem(3);
+  margin: toRem(0) toRem(10);
+  transition: all .4s ease;
+
+}
+
+.year-input_outline {
+  pointer-events: auto;
+  outline: toRem(1) solid $goldColor;
+}
+
+.date-toggle {
+  @include adaptiveValue("max-width", 50, 40);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+}
+
+.prev,
+.next {
+  position: relative;
+  width: toRem(10);
+  height: toRem(17);
+  transition: all .2s ease;
+
+  @media (any-hover: hover) {
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &:active {
+    transform: scale(0.95);
+    opacity: .8;
+  }
+}
+
+.prev {
+  &::before {
+    left: toRem(-4);
+    transform: rotateZ(90deg);
+  }
+}
+
+.next {
+  &::before {
+    right: toRem(-4);
+    transform: rotateZ(-90deg);
+  }
+}
+
+.prev::before,
+.next::before {
+  position: absolute;
+  top: toRem(4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: toRem(10);
+  font-size: toRem(17);
+  color: $goldColor;
+  z-index: 5;
+
+  @media (max-width:$mobile) {
+    @include adaptiveValue("font-size", 17, 13);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+
+.days,
+.dates {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  column-gap: toRem(55);
+
+  @media (max-width:$mobile) {
+    @include adaptiveValue("column-gap", 55, 10);
+  }
+}
+
+.days {
+  font-size: toRem(13);
+  line-height: 138.461538%;
+  /* 18/13 */
+  color: rgb(235, 235, 245, .3);
+  text-transform: uppercase;
+  padding-bottom: toRem(15);
+  text-align: center;
+
+  @media (max-width:$mobile) {
+    @include adaptiveValue("padding-bottom", 15, 7);
+  }
+}
+
+.dates {
+  position: relative;
+  row-gap: toRem(6);
+
+  button {
+    max-width: toRem(40);
+    width: 100%;
+    font-family: "SFProDisplay";
+    font-size: toRem(20);
+    line-height: 150%;
+    /* 30/20 */
+    color: #ffffff;
+    border-radius: 50%;
+    padding: toRem(5);
+    box-sizing: border-box;
+    justify-self: center;
+
+    @media (max-width:$mobile) {
+      @include adaptiveValue("font-size", 20, 14);
+      @include adaptiveValue("max-width", 40, 31);
+    }
+
+    &.selected {
+      background: $goldColor;
+      color: #151515;
+    }
+
+    &.today {
+      background: rgb(235, 235, 245, .3);
+
+    }
+
+    &:disabled {
+      color: rgb(235, 235, 245, .3);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    &.hidden {
+      visibility: hidden;
+    }
+  }
+}
+
+//=======Time select====================
+
+.form-appointment {
+
+  // .form-appointment__time
+
+  &__time {
+    max-width: toRem(872);
+    @include adaptiveValue("padding-top", 72, 36);
+    margin: 0 auto;
+  }
+}
+
+.time-select {
+
+  // .time-select__title
+
+  &__title {
+    @include adaptiveValue("font-size", 32, 28);
+    line-height: 150%;
+    /* 48/32 */
+    text-align: center;
+    color: #ffffff;
+  }
+
+
+  .time-select {
+
+    // .time-select__block
+
+    &__block {
+      @include adaptiveValue("padding-top", 48, 26);
+    }
+  }
+
+  .select-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    @include adaptiveValue("column-gap", 24, 16);
+    row-gap: toRem(15);
+    justify-content: center;
+
+    @media (max-width:$mobileSmall) {
+      display: grid;
+      width: 100%;
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: toRem(18);
+      column-gap: toRem(15);
+    }
+
+    input {
+      width: 0;
+      height: 0;
+      position: absolute;
+      opacity: 0;
+      z-index: -1;
+    }
+
+    input:checked+.select-buttons__item {
+      color: $bgDarkLight;
+      font-weight: 600;
+      background-color: $goldColor;
+    }
+
+    // .select-buttons__item
+
+    &__item {
+      flex: 1 1 150px;
+      max-width: toRem(200);
+      min-width: toRem(100);
+      width: 100%;
+      line-height: 150%;
+      /* 24/16 */
+      color: #ffffff;
+      @include adaptiveValue("font-size", 16, 12, 0, 860, 479.98);
+      @include adaptiveValue("padding-top", 20, 10, 0, 860, 479.98);
+      @include adaptiveValue("padding-bottom", 20, 10, 0, 860, 479.98);
+      padding-left: toRem(5);
+      padding-right: toRem(5);
+      border-radius: toRem(12);
+      border: toRem(1) solid $goldColor;
+      cursor: pointer;
+      transition: all .2s ease-in;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+
+      span {
+        display: block;
+        text-align: center;
+      }
+
+      @media (any-hover: hover) {
+        &:hover {
+          color: $goldColor;
+        }
+      }
+    }
+  }
+}
+
+//=======Submit block====================
+
+.form-appointment {
+
+  // .form-appointment__submit
+
+  &__submit {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    @include adaptiveValue("row-gap", 40, 26);
+    row-gap: toRem(40);
+    column-gap: toRem(24);
+    justify-content: space-between;
+    @include adaptiveValue("padding-top", 72, 36);
+    @include adaptiveValue("padding-bottom", 48, 30);
+
+    @media (max-width:$tablet) {
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    }
+
+    @media (max-width:$mobile) {
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
+  }
+}
+
+.submit-inputs {
+  position: relative;
+  z-index: 5;
+
+  // .submit-inputs__item
+
+  &__item {
+    max-width: toRem(648);
+    width: 100%;
+
+    @media (max-width:$mobile) {
+      max-width: 100%;
+    }
+  }
+}
+
+.submit-name,
+.submit-phone,
+.submit-email {
+
+  position: relative;
+
+  input {
+    width: 100%;
+    @include adaptiveValue("padding-top", 18, 10);
+    @include adaptiveValue("padding-bottom", 18, 10);
+    @include adaptiveValue("padding-left", 32, 16);
+    @include adaptiveValue("padding-right", 32, 5);
+    @include adaptiveValue("font-size", 22, 16);
+    line-height: 150%;
+    /* 27/18 */
+    color: $goldColor;
+    background-color: #2b2b2b;
+    z-index: 5;
+    border: toRem(1) solid rgb(255, 255, 255, 0.3);
+    border-radius: toRem(12);
+    outline: none;
+    cursor: pointer;
+    transition: all .4s ease-in;
+
+    &.input-invalid {
+
+      border-color: rgb(193, 12, 12);
+
+      &:focus {
+        border-color: rgb(193, 12, 12);
+      }
+
+      &:-webkit-autofill {
+        border-color: rgb(193, 12, 12);
+      }
+
+      &:-webkit-autofill:focus {
+        border-color: rgb(193, 12, 12);
+      }
+
+    }
+
+    &::placeholder {
+      opacity: 0;
+    }
+
+    &:focus {
+      border-color: $goldColor;
+    }
+
+    &:-webkit-autofill {
+      border-color: rgb(255, 255, 255, 0.3);
+      -webkit-text-fill-color: $goldColor;
+      caret-color: $goldColor;
+      box-shadow: 0 0 0px 1000px transparent inset;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+
+    &:-webkit-autofill:focus {
+      border-color: $goldColor;
+    }
+  }
+
+  input:focus+&__placeholder {
+    top: -2%;
+    left: 3%;
+    @include adaptiveValue("font-size", 14, 10);
+    background-color: $bgMainColor;
+    color: $goldColor;
+  }
+
+  input:not(:placeholder-shown)+&__placeholder {
+    top: -2%;
+    left: 3%;
+    @include adaptiveValue("font-size", 14, 10);
+    //font-size: toRem(10);
+    background-color: $bgMainColor;
+  }
+
+  input.input-invalid+.submit-name__placeholder {
+    color: rgb(193, 12, 12);
+  }
+
+  input.input-invalid+.submit-phone__placeholder {
+    color: rgb(193, 12, 12);
+  }
+
+  input.input-invalid+.submit-email__placeholder {
+    color: rgb(193, 12, 12);
+  }
+
+  // .submit-name__placeholder
+
+  &__placeholder {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    @include adaptiveValue("font-size", 16, 12);
+    padding: toRem(0) toRem(5);
+    transform: translateY(-50%);
+    color: rgb(255, 255, 255, 0.5);
+    border-radius: toRem(12);
+    transition: all .4s ease;
+    pointer-events: none;
+    text-transform: capitalize;
+  }
+}
+
+.submit-phone__placeholder {
+  span {
+    padding-left: toRem(10);
+    text-transform: none;
+  }
+
+}
+
+//============Submit Services==============
+
+.submit-services {
+
+  position: relative;
+  transition: all .2s ease;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: toRem(24);
+    height: toRem(24);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+    @include adaptiveValue("font-size", 18, 12);
+    line-height: 133.333333%;
+    /* 24/18 */
+    @include adaptiveValue("margin-right", 24, 8);
+    margin-right: toRem(24);
+    z-index: 5;
+    pointer-events: none;
+    transition: all .25s ease;
+  }
+
+  &__input_btn {
+    display: block;
+    width: 100%;
+    @include adaptiveValue("padding-top", 18, 10);
+    @include adaptiveValue("padding-bottom", 18, 10);
+    @include adaptiveValue("padding-left", 32, 16);
+    @include adaptiveValue("padding-right", 50, 35);
+    @include adaptiveValue("font-size", 22, 16);
+    line-height: 150%;
+    /* 27/18 */
+    color: $goldColor;
+    background-color: $bgDarkLight;
+    text-align: start;
+    z-index: 5;
+    border: toRem(1) solid rgb(255, 255, 255, 0.3);
+    border-radius: toRem(12);
+    outline: none;
+    cursor: pointer;
+    transition: all .4s ease-in;
+
+    &:focus {
+      border-color: $goldColor;
+    }
+  }
+
+  &__input_btn:focus+&__placeholder {
+    top: -2%;
+    left: 3%;
+    @include adaptiveValue("font-size", 14, 10);
+    background-color: $bgMainColor;
+    color: $goldColor;
+  }
+
+  &__input_btn[value]+&__placeholder {
+    top: -2%;
+    left: 3%;
+    @include adaptiveValue("font-size", 14, 10);
+    background-color: $bgMainColor;
+  }
+
+  // .submit-services__placeholder
+
+  &__placeholder {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    @include adaptiveValue("font-size", 16, 12);
+    padding: toRem(0) toRem(5);
+    transform: translateY(-50%);
+    color: rgb(255, 255, 255, 0.5);
+    transition: all .4s ease;
+    pointer-events: none;
+    text-transform: capitalize;
+    border-radius: toRem(12);
+  }
+
+  // .submit-services__list
+
+  &__list {}
+
+  &__selected {
+    top: -2%;
+    left: 3%;
+    @include adaptiveValue("font-size", 14, 10);
+    background-color: $bgMainColor;
+  }
+}
+
+.submit-services.services-input__active::before {
+  color: $goldColor
+}
+
+.submit-services.services-arrow__down::before {
+  top: 60%;
+  color: $goldColor;
+}
+
+#selected-service {
+  display: none;
+}
+
+.services-list {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  // max-height: toRem(120);
+  width: 100%;
+  //overflow-y: scroll;
+  top: 110%;
+  left: 0;
+  padding: toRem(5) toRem(5);
+  background-color: $bgDark;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+  border-radius: toRem(5);
+  z-index: 3;
+  transition: all .4s ease;
+
+  ul {
+    max-height: toRem(120);
+  }
+
+  &__visible {
+    visibility: visible;
+    opacity: 0.98;
+  }
+
+  // .services-list__item
+
+  &__item {
+    @include adaptiveValue("font-size", 16, 13);
+    padding: toRem(5);
+    color: $cardTitle;
+    border-radius: toRem(5);
+    cursor: pointer;
+    transition: all .3s;
+
+    &:not(:last-child) {
+      margin-bottom: toRem(2);
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        color: $goldColor;
+        background-color: rgba(115, 115, 133, 0.3);
+        transform: scale(1.01);
+      }
+    }
+
+    &:active {
+      transform: scale(1);
+      opacity: .6;
+    }
+
+    @media (max-width:$mobile) {
+      &:active {
+        transform: scale(0.98) translateY(10%);
+        color: $goldColor;
+        background-color: $bgDarkLight;
+        opacity: 1;
+      }
+
+    }
+  }
+}
+
+.form-appointment__btn {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  transition: all .4s ease;
+
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: scale(0);
+    border-radius: 50%;
+    border: 1px solid $bgDarkLight;
+    z-index: -1;
+  }
+
+  &.appointment-btn__disabled {
+    border-color: rgb(233, 228, 219, 0.4);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: $goldColor;
+      background-color: transparent;
+    }
+  }
+
+  @media (min-width:$mobile) {
+    &:active {
+      &::after {
+        animation: appointment-btn .2s ease-out;
+      }
+    }
+  }
+
+  @keyframes appointment-btn {
+    0% {
+      transform: scale(20);
+    }
+
+    50% {
+      transform: scale(60);
+    }
+
+    75% {
+      transform: scale(80);
+    }
+
+    100% {
+      transform: scale(100);
+    }
+  }
+
+
+  &:active {
+    transform: scale(.95) translateY(7px);
+    opacity: .3;
+  }
+
+  &:disabled {
+
+    position: relative;
+    overflow: hidden;
+    pointer-events: none;
+    transition: all .4s ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -27%;
+      left: -5%;
+      width: 110%;
+      height: 160%;
+      border-radius: toRem(12);
+      border: toRem(2) solid rgb(233, 228, 219, 0.4);
+      background-color: rgb(233, 228, 219, 0.4);
+      z-index: 2;
+    }
+  }
+}
+
+.submit-message__success {
+  position: fixed;
+  @include adaptiveValue("padding", 8, 4);
+  @include adaptiveValue("font-size", 16, 10);
+  color: $goldColor;
+  text-transform: capitalize;
+  z-index: 20;
+}

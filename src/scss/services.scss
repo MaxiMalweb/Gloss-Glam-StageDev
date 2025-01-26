@@ -1,0 +1,142 @@
+.services {
+
+  // .services__container
+
+  &__container {
+    display: grid;
+    @include adaptiveValue("padding-top", 60, 40);
+  }
+
+  // .services__block-header
+
+  &__block-header {
+    justify-self: center;
+    max-width: toRem(620);
+  }
+
+  // .services__list
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(toRem(312), 1fr));
+    grid-template-rows: 1fr 1fr;
+    grid-auto-rows: 1fr;
+    width: 100%;
+
+    @include adaptiveValue("padding-top", 80, 20);
+    @include adaptiveValue("column-gap", 24, 14);
+    @include adaptiveValue("row-gap", 48, 26);
+
+
+    @media (max-width:$mobile) {
+      grid-template-columns: repeat(auto-fit, minmax(toRem(220), 1fr));
+    }
+  }
+
+  // .services__item
+
+  &__item {
+    transform: translate(0px, 10%);
+    opacity: 0;
+    transition: all .2s;
+
+    &._watcher-view {
+      transition: all .6s;
+      transform: translate(0px, 0px);
+      opacity: 1;
+    }
+  }
+}
+
+.item-services {
+  width: 100%;
+  display: flex;
+  border-radius: 12px;
+  justify-self: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+
+  // .item-services__link
+
+  &__link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: toRem(0) toRem(30);
+    @include adaptiveValue("padding-top", 52, 20);
+    @include adaptiveValue("padding-bottom", 52, 20);
+    border-radius: 12px;
+    border: 1px solid $goldColor;
+    transition: all .3s ease-out;
+
+    &--body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        color: $goldColor;
+        background-color: transparent;
+        box-shadow: 0 0 5px 0 $goldColor inset, 0 0 5px 2px $goldColor;
+        border: 1px solid $goldColor;
+
+        p {
+          color: $goldColor;
+        }
+      }
+    }
+
+    &:active {
+      opacity: .3;
+      transform: scale(.95);
+      color: $goldColor;
+      background-color: transparent;
+      box-shadow: 0 0 5px 0 $goldColor inset, 0 0 5px 2px $goldColor;
+
+      p {
+        color: $goldColor;
+      }
+    }
+  }
+
+  &__picture {
+    aspect-ratio: 110 / 90;
+    max-height: toRem(90);
+    @include adaptiveValue("margin-left", 55, 15);
+    @include adaptiveValue("margin-right", 55, 15);
+    @include adaptiveValue("margin-bottom", 32, 18);
+  }
+
+  &__text {
+    width: 100%;
+  }
+
+  // .item-services__title
+
+  &__title {
+    width: 100%;
+    text-align: center;
+    font-family: "Cormorant Garamond";
+    @include adaptiveValue("font-size", 48, 28);
+    font-weight: 500;
+    line-height: 133.333333%;
+    /* 64/48 */
+    color: #ffffff;
+    text-transform: capitalize;
+
+    &:not(:last-child) {
+      margin-bottom: toRem(10);
+    }
+
+  }
+}
+
+.wedding-picture {
+  aspect-ratio: 74 / 140;
+  max-height: toRem(140);
+  @include adaptiveValue("margin-left", 75, 32);
+  @include adaptiveValue("margin-right", 75, 32);
+}

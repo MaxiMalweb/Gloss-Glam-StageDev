@@ -1,0 +1,272 @@
+.subscribe {
+
+  background-color: $bgDark;
+
+
+  // .subscribe__container
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include adaptiveValue("padding-top", 37, 20);
+    @include adaptiveValue("padding-bottom", 121, 30);
+    overflow: hidden;
+  }
+
+  // .subscribe__block-header
+
+  &__block-header {}
+
+  // .news__form
+
+  &__form {}
+}
+
+.download {
+
+  // .download__button
+
+  &__button {
+    max-width: toRem(20);
+    width: 100%;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: transform .3s ease;
+
+    @media (any-hover: hover) {
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &:active {
+      transform: scale(1);
+    }
+  }
+}
+
+.block-header {
+
+  // .block-header__title
+
+  &__title {}
+
+  // .block-header__text
+
+  &__text {
+    max-width: toRem(640);
+    width: 100%;
+  }
+}
+
+// .subscribe-form
+.subscribe-form {
+  width: 100%;
+  @include adaptiveValue("padding-top", 32, 25);
+}
+
+.subscribe-body {
+  display: flex;
+  max-width: toRem(532);
+  width: 100%;
+  position: relative;
+  border-radius: toRem(12);
+  margin: 0 auto;
+
+  &__email {
+    max-width: toRem(405);
+    width: 100%;
+    flex: 1 1 auto;
+    @include adaptiveValue("padding-top", 14, 10);
+    @include adaptiveValue("padding-bottom", 14, 10);
+    @include adaptiveValue("padding-left", 31, 10);
+    @include adaptiveValue("padding-right", 31, 5);
+    @include adaptiveValue("font-size", 20, 16);
+
+    line-height: 150%;
+    /* 27/18 */
+    border: toRem(1) solid rgb(255, 255, 255, 0.3);
+    border-right: none;
+    border-radius: toRem(12) 0 0 toRem(12);
+    color: $goldColor;
+    outline: none;
+    cursor: pointer;
+
+    &::placeholder {
+      opacity: 0;
+    }
+
+    &:focus {
+      border-color: $goldColor;
+    }
+
+    &:-webkit-autofill {
+      border-color: rgb(255, 255, 255, 0.3);
+      -webkit-text-fill-color: $goldColor;
+      caret-color: $goldColor;
+      box-shadow: 0 0 0px 1000px transparent inset;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+
+    &:-webkit-autofill:focus {
+      border-color: $goldColor;
+    }
+
+    &:focus+.subscribe-body__placeholder {
+      top: -2%;
+      left: 3%;
+      @include adaptiveValue("font-size", 14, 10);
+      background-color: $bgDark;
+      color: $goldColor;
+    }
+
+    &:not(:placeholder-shown)+.subscribe-body__placeholder {
+      top: -2%;
+      left: 3%;
+      @include adaptiveValue("font-size", 14, 10);
+      background-color: $bgDark;
+    }
+
+    &.input-invalid {
+
+      border-color: rgb(193, 12, 12);
+
+      &:focus {
+        border-color: rgb(193, 12, 12);
+      }
+
+      &:-webkit-autofill {
+        border-color: rgb(193, 12, 12);
+      }
+
+      &:-webkit-autofill:focus {
+        border-color: rgb(193, 12, 12);
+      }
+    }
+
+    &.input-invalid+.subscribe-body__placeholder {
+      color: rgb(193, 12, 12);
+    }
+  }
+
+
+  &__placeholder {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    line-height: 150%;
+    @include adaptiveValue("font-size", 16, 12);
+    padding: toRem(0) toRem(5);
+    transform: translateY(-50%);
+    color: rgb(255, 255, 255, 0.5);
+    border-radius: toRem(12);
+    transition: all .4s ease;
+    pointer-events: none;
+  }
+
+
+  &__button {
+    display: block;
+    max-width: toRem(125);
+    width: 100%;
+    flex: 1 1 125px;
+    position: relative;
+    font-family: "Raleway";
+    font-weight: 600;
+
+    @include adaptiveValue("padding-top", 14, 12);
+    @include adaptiveValue("padding-bottom", 14, 12);
+    @include adaptiveValue("padding-left", 30, 5);
+    @include adaptiveValue("padding-right", 30, 5);
+    @include adaptiveValue("font-size", 16, 12);
+
+    margin-left: toRem(-22);
+    z-index: 5;
+    overflow: hidden;
+    transition: all .4s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: scale(0);
+      border-radius: 50%;
+      border: 1px solid $bgDarkLight;
+      z-index: -1;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        border: toRem(2) solid $goldColor;
+        color: $goldColor;
+        background-color: $bgDark;
+      }
+    }
+
+    &:active {
+      color: $goldColor;
+      background-color: transparent;
+    }
+
+    &:disabled {
+
+      position: relative;
+      overflow: hidden;
+      pointer-events: none;
+      border-color: rgb(233, 228, 219, 0.4);
+      transition: all .4s ease;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -27%;
+        left: -5%;
+        width: 110%;
+        height: 160%;
+        border-radius: toRem(12);
+        border: toRem(2) solid rgb(233, 228, 219, 0.4);
+        background-color: rgb(233, 228, 219, 0.4);
+        z-index: 2;
+      }
+    }
+
+    @media (min-width:$mobile) {
+      &:active {
+        &::after {
+          animation: subscribe-btn .3s ease-out;
+          z-index: 3;
+        }
+
+        &::before {
+          background-color: $bgDark;
+          z-index: 2;
+        }
+
+        span {
+          position: relative;
+          z-index: 10;
+        }
+      }
+    }
+
+    @keyframes subscribe-btn {
+      0% {
+        transform: scale(15);
+      }
+
+      50% {
+        transform: scale(50);
+      }
+
+      75% {
+        transform: scale(70);
+      }
+
+      100% {
+        transform: scale(100);
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+//<BUTTONS (a.btn+tab)>
+// Сніппет (HTML): btn
+
+.button {
+	background-color: $goldColor;
+	display: inline-flex;
+	@include adaptiveValue("font-size", 16, 11);
+	font-weight: 500;
+	line-height: 150%;
+	/* 24/16 */
+	color: $bgMainColor;
+	text-transform: capitalize;
+
+	@include adaptiveValue("padding-top", 15, 8);
+	@include adaptiveValue("padding-bottom", 15, 8);
+	@include adaptiveValue("padding-left", 32, 12);
+	@include adaptiveValue("padding-right", 32, 12);
+	border-radius: 12px;
+	transition: all .3s;
+	border: toRem(2) solid $goldColor;
+
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: $goldColor;
+			color: $bgDark;
+		}
+	}
+
+	&--fw {
+		width: 100%;
+	}
+
+	&--small {
+
+		@include adaptiveValue("padding-top", 15, 8, 0, $containerWidth, 767.98);
+		@include adaptiveValue("padding-bottom", 15, 8, 0, $containerWidth, 767.98);
+		@include adaptiveValue("padding-left", 32, 12, 0, $containerWidth, 767.98);
+		@include adaptiveValue("padding-right", 32, 12, 0, $containerWidth, 767.98);
+		border: toRem(2) solid $goldColor;
+		transition: all .5s, transform 0s;
+
+		@media (max-width:$mobile) {
+			padding: toRem(15) toRem(32);
+			font-size: toRem(20);
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: transparent;
+				border: toRem(2) solid $goldColor;
+				color: $goldColor;
+				transition: all .5s, transform 0s;
+			}
+		}
+
+		&:active {
+			border: toRem(2) solid $mainColor;
+			color: $mainColor;
+			transform: scale(.95);
+			transition: all .5s, transform 0s;
+		}
+	}
+
+	&--transparent {
+		display: inline-block;
+		color: $cardTitle;
+		background-color: transparent;
+		border: toRem(1) solid $goldColor;
+		color: $cardTitle;
+		@include adaptiveValue("font-size", 20, 18);
+		line-height: 150%;
+		font-weight: 600;
+
+		@media (any-hover: hover) {
+			&:hover {
+				color: $bgDark;
+				background-color: $goldColor;
+			}
+		}
+
+		@media (max-width:$mobile) {
+			display: block;
+			width: 100%;
+		}
+
+		&:active {
+			background-color: transparent;
+			color: $cardTitle;
+		}
+	}
+
+	&--back {
+		padding: 0;
+
+		a {
+			padding-top: toRem(16);
+			padding-bottom: toRem(16);
+			@include adaptiveValue("padding-left", 32, 12);
+			@include adaptiveValue("padding-right", 32, 12);
+
+			@media (max-width:$mobileSmall) {
+				width: 100%;
+			}
+		}
+	}
+
+}
