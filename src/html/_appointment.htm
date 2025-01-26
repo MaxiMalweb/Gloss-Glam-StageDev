@@ -1,0 +1,148 @@
+<section data-watch="navigator" class="appointment">
+  <!-- .appointment__container -->
+  <div class="appointment__container">
+    <div class="appointment__block-header block-header">
+      <h2 class="block-header__title">Make An Appointment </h2>
+      <div class="block-header__text">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce condimentum justo sit amet dui feugiat, ut
+          consectetur lacus consectetur.</p>
+      </div>
+    </div>
+    <form action="#" name="appointment" class="appointment__form form-appointment">
+      <!-- .Datepicker -->
+      <fieldset form="appointment" class="form-appointment__date datepicker">
+        <input type="text" name="appointment-date" class="datepicker__input">
+        <div class="datepicker__body">
+          <!-- .datepicker-header -->
+          <div class="datepicker-header">
+            <div class="dropdown-month">
+              <button type="button" class="dropdown-button"></button>
+              <div class="dropdown-list">
+                <ul data-simplebar>
+                  <li class="dropdown-list__item" data-value="0">January</li>
+                  <li class="dropdown-list__item" data-value="1">February</li>
+                  <li class="dropdown-list__item" data-value="2">March</li>
+                  <li class="dropdown-list__item" data-value="3">April</li>
+                  <li class="dropdown-list__item" data-value="4">May</li>
+                  <li class="dropdown-list__item" data-value="5">June</li>
+                  <li class="dropdown-list__item" data-value="6">July</li>
+                  <li class="dropdown-list__item" data-value="7">August</li>
+                  <li class="dropdown-list__item" data-value="8">September</li>
+                  <li class="dropdown-list__item" data-value="9">October</li>
+                  <li class="dropdown-list__item" data-value="10">November</li>
+                  <li class="dropdown-list__item" data-value="11">December</li>
+                </ul>
+              </div>
+
+              <input type="text" class="month-input" value="">
+            </div>
+            <div class="year-counter">
+              <span class="year-counter__minus _icon-drop-arrow"></span>
+              <input type="text" value="" class="year-input" readonly>
+              <span class="year-counter__plus _icon-drop-arrow"></span>
+            </div>
+            <div class="date-toggle">
+              <button type="button" class="prev _icon-drop-arrow"></button>
+              <button type="button" class="next _icon-drop-arrow"></button>
+            </div>
+          </div>
+        </div>
+        <!-- /.datepicker-header -->
+
+        <!-- .days -->
+        <div class="days">
+          <span>Sun</span>
+          <span>Mon</span>
+          <span>Tue</span>
+          <span>Wed</span>
+          <span>Thu</span>
+          <span>Fri</span>
+          <span>Sat</span>
+        </div>
+        <!-- /.days -->
+
+        <!-- .dates -->
+        <div class="dates">
+        </div>
+        <!-- /.dates -->
+      </fieldset>
+      <!-- /.Datepicker -->
+
+      <!-- .time-select -->
+      <fieldset form="appointment" class="form-appointment__time time-select">
+        <h3 class="time-select__title">Select A Time</h3>
+        <div class="time-select__block select-buttons">
+          <input type="radio" id="firstTime" name="selectedTime" value="1">
+          <label for="firstTime" class="select-buttons__item">
+            <span>8.30 am - 9.30 am</span>
+          </label>
+          <input type="radio" id="secondTime" name="selectedTime" value="2">
+          <label for="secondTime" class="select-buttons__item">
+            <span>9.30 am - 10.30 am</span>
+          </label>
+          <input type="radio" id="thirdTime" name="selectedTime" value="3">
+          <label for="thirdTime" class="select-buttons__item">
+            <span>10.30 am - 11.30 am</span>
+          </label>
+          <input type="radio" id="fourthTime" name="selectedTime" value="4">
+          <label for="fourthTime" class="select-buttons__item">
+            <span> 11.30 am - 12.30 am</span>
+          </label>
+        </div>
+      </fieldset>
+      <!-- /.time-select -->
+
+      <!-- .submit -->
+      <fieldset form="appointment" class="form-appointment__submit submit-inputs">
+        <!-- .submit-name -->
+        <div class="submit-inputs__item submit-name">
+          <input type="text" name="submit-name" placeholder="" title="Field is required" maxlength="50"
+            data-regexp="^\w+\s(\w+\s?){1,4}$" data-regexp-flags="i" class="empty">
+          <label class="submit-name__placeholder">Enter Your Name *</label>
+        </div>
+        <!-- /.submit-name -->
+        <!-- .submit-phone -->
+        <div class="submit-inputs__item submit-phone">
+          <input type="tel" name="submit-phone" placeholder="" title="Field is required"
+            data-regexp="^\+\d{1,4}\(\d{1,5}\)\d{4,10}$" data-regexp-flags="g" class="empty">
+          <label class="submit-phone__placeholder">Enter Phone Number *
+            <span>[+x(x)xxxxxxx]</span>
+          </label>
+        </div>
+        <!-- /.submit-phone -->
+        <!-- .submit-email -->
+        <div class="submit-inputs__item submit-email">
+          <input type="email" name="submit-email" placeholder="" title="Field is required"
+            data-regexp="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$" class="empty">
+          <label class="submit-email__placeholder">Enter Your Email *</label>
+        </div>
+        <!-- /.submit-email -->
+        <!-- .submit-services -->
+        <div class="submit-inputs__item submit-services _icon-drop-arrow">
+          <input type="text" name="selected-service" id="selected-service">
+          <input type="button" name="submit-services" class="submit-services__input_btn">
+          <label class="submit-services__placeholder">Select Services</label>
+          <!-- .submit-services__list -->
+          <div class="submit-services__list services-list">
+            <ul data-simplebar>
+              <li class="services-list__item">Hair Cut</li>
+              <li class="services-list__item">Shaving</li>
+              <li class="services-list__item">Hair Dye</li>
+              <li class="services-list__item">Facial</li>
+              <li class="services-list__item">Keratin Treatment</li>
+              <li class="services-list__item">Hair Removal</li>
+              <li class="services-list__item">Hair Treatment</li>
+              <li class="services-list__item">Wedding Package</li>
+            </ul>
+          </div>
+          <!-- /.submit-services__list -->
+        </div>
+        <!-- /.submit-services -->
+      </fieldset>
+      <!-- /.submit -->
+      <button type="submit" class="button form-appointment__btn" disabled>
+        Book Appointment</button>
+    </form>
+  </div>
+  <!-- /.appointment__container -->
+</section>
