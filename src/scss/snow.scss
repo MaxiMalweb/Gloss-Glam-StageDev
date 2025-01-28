@@ -24,6 +24,18 @@
   background: white;
   border-radius: 50%;
 
+  @media (max-width:$mobile) {
+    &:nth-child(n+100) {
+      display: none;
+    }
+  }
+
+  @media (max-width:$mobileSmall) {
+    &:nth-child(n+50) {
+      display: none;
+    }
+  }
+
   @for $i from 1 through $total {
     $random-x: random(1000000) * 0.0001vw;
     $random-offset: random_range(-100000, 100000) * 0.0001vw;
